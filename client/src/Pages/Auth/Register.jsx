@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 const RegisterScreen = () => {
   
@@ -26,10 +27,14 @@ const RegisterScreen = () => {
     }
 
     try {
-      await register(email, password);
+      const userRegister = await register(email, password);
+      /**Update or Register Name */
+      const user = userRegister.user;
+      await updateProfile(user, { displayName: name });
+      
       navigate("/welcome");
     } catch (e) {
-      alert(e);
+      alert(e.message);
     }
   }
     

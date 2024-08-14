@@ -19,10 +19,15 @@ const WelcomeScreen = () => {
     return (
       <div className="h-screen bg-gradient-to-r from-indigo-500">
         <div className="h-full">
-          <div className="flex flex-wrap justify-center pt-5">
-            {currentUser.email}
+          <div className="text-center justify-center pt-5">
+            {currentUser.displayName && (
+              <>
+              <p>Name: {currentUser.displayName}</p>
+              </>
+            )}
+            Email: {currentUser.email}
           </div>
-          <div className="flex flex-wrap justify-center" >
+          <div className="text-center justify-center" >
             <button
                   type="button"
                   className="rounded bg-sky-600 px-7 py-1 text-sm font-medium uppercase leading-normal text-white shadow-sky-3 transition duration-150 ease-in-out hover:bg-sky-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2"
